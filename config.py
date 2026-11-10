@@ -12,7 +12,7 @@ class Config:
     num_classes: int = 100
 
     # --- training ---
-    num_epochs: int = 120   # ✅ baseline 표준값 (200 → 120)
+    num_epochs: int = 120
     lr: float = 0.1
     momentum: float = 0.9
     weight_decay: float = 5e-4
@@ -27,5 +27,5 @@ class Config:
     save_best: bool = True
 
     # --- ERF logging ---
-    erf_epochs: Tuple[int, ...] = (1, 10, 20, 30, 50)  # 마지막 epoch까지 포함
+    erf_epochs: Tuple[int, ...] = (1, 10, 20, 30, 50)
     erf_num_batches: int = 2
