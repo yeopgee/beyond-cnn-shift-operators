@@ -1,30 +1,60 @@
-# Feature-map shifts for CNNs
+# Expanding CNN receptive fields with feature-map shifts
 
-This repository presents my contribution to a [KUBIG Beyond CNN team project](https://github.com/KU-BIG/KUBIG_2025_FALL/tree/main/KUBIG%20CONFERENCE/Beyond%20CNN%201%ED%8C%80%28%5E%5E%29). The team explored ways to give CNNs wider spatial context without using attention or large convolution kernels. My part focused on shifting intermediate feature maps before a ResNet-18 stage and measuring the effect on CIFAR-100 classification and the effective receptive field (ERF).
+This repository contains my shift-operation experiments from the [KUBIG Beyond CNN team project](https://github.com/KU-BIG/KUBIG_2025_FALL/tree/main/KUBIG%20CONFERENCE/Beyond%20CNN%201%ED%8C%80%28%5E%5E%29). The team explored ways to give CNNs wider spatial context while retaining their convolutional structure. My experiments used ResNet-18 on CIFAR-100.
+
+## Motivation
+
+A small convolution kernel processes nearby positions. Shifting intermediate feature maps before a convolution lets the same kernel receive information from other positions without enlarging the kernel or adding attention.
+
+![Illustration of jittering a feature map](assets/jittering-concept.png)
+
+*The motivating idea from my KUBIG presentation: shift features before local convolution.*
 
 ## My contribution
 
-- Implemented deterministic channel-group shifts, per-forward random shifts, subpixel shifts with interpolation, and per-channel learnable soft shifts.
-- Integrated these operators into the same CIFAR-100 ResNet-18 backbone and compared them with a baseline across seeds.
-- Measured ERF from an intermediate activation to the input and presented the shift experiments at the KUBIG 25-2 conference.
+- Implemented **deterministic channel-group shifts**, **random shifts**, **subpixel shifts with interpolation**, and **learnable soft shifts**.
+- Inserted each operator into the same ResNet-18 backbone and held the remaining architecture and training setup fixed for comparison.
+- Compared classification accuracy and visualized the **effective receptive field (ERF)** at a fixed output position.
 
-In these experiments, shifts widened the measured ERF but did not improve classification accuracy. This result concerns my shift variants; the [team project](https://github.com/KU-BIG/KUBIG_2025_FALL/tree/main/KUBIG%20CONFERENCE/Beyond%20CNN%201%ED%8C%80%28%5E%5E%29) also explored other approaches.
+![Diagram of feature-map shifts before a CNN layer](assets/shift-diagram.png)
 
-## Code map
+*Shift-operation diagram from my KUBIG presentation.*
 
-| File | Purpose |
+## Results
+
+The presentation reports CIFAR-100 test accuracy over four seeds after 120 epochs:
+
+| Operator | Mean accuracy (%) | SD |
+| --- | ---: | ---: |
+| No shift | **77.62** | 0.16 |
+| Deterministic shift | 77.18 | 0.24 |
+| Learnable shift | 77.01 | 0.21 |
+| 0.5-pixel shift | 76.65 | 0.31 |
+| Random 1-pixel shift | 76.17 | 0.21 |
+
+At epoch 20, the shifted models showed a wider measured ERF:
+
+| No shift | Deterministic shift | Learnable shift |
+| :---: | :---: | :---: |
+| ![Baseline ERF](assets/erf-baseline.png) | ![Deterministic-shift ERF](assets/erf-deterministic.png) | ![Learnable-shift ERF](assets/erf-learnable.png) |
+
+*ERF visualizations from my KUBIG presentation; shown at the same training epoch.*
+
+## Discussion
+
+The shifts widened the measured ERF but did not improve classification accuracy in these experiments. A wider ERF alone was therefore insufficient under this setup. These findings describe my shift variants; the [team project](https://github.com/KU-BIG/KUBIG_2025_FALL/tree/main/KUBIG%20CONFERENCE/Beyond%20CNN%201%ED%8C%80%28%5E%5E%29) also explored other approaches.
+
+## Code and usage
+
+| File | Role |
 | --- | --- |
-| `operators.py` | Five shift operators and interpolation helpers |
-| `model.py` | CIFAR ResNet-18 and operator selection |
-| `config.py` | Experiment settings |
-| `data.py` | CIFAR-100 transforms and loaders |
-| `evaluation.py` | Accuracy, parameter count, and ERF calculation |
-| `train.py` | Training, logging, checkpoints, and command-line entry point |
-| `notebooks/ConvJitter.ipynb` | Cleaned original experiment notebook for provenance |
+| [`operators.py`](operators.py) | Shift operators and interpolation |
+| [`model.py`](model.py) | ResNet-18 with operator selection |
+| [`train.py`](train.py) | Training and experiment entry point |
+| [`evaluation.py`](evaluation.py) | Accuracy and ERF measurement |
+| [`notebooks/ConvJitter.ipynb`](notebooks/ConvJitter.ipynb) | Original experiment sequence |
 
-## Run an experiment
-
-Install the packages in `requirements.txt`, then run a variant from this directory:
+Install the packages in [`requirements.txt`](requirements.txt), then run, for example:
 
 ```bash
 python train.py --variant baseline --seed 8
@@ -32,4 +62,4 @@ python train.py --variant shift_det --seed 8
 python train.py --variant shift_learnable --seed 8
 ```
 
-`train.py --help` lists the other variants and settings. CIFAR-100 is downloaded through `torchvision`. Checkpoints, TensorBoard logs, and datasets are generated locally and omitted here. The notebook records the original sequence of exploratory runs; the `.py` files separate those components by purpose.
+CIFAR-100 is downloaded through `torchvision`. Checkpoints and datasets are generated locally and are not included here.
