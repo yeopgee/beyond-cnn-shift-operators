@@ -155,8 +155,8 @@ def main(cfg: Config) -> None:
                 loader=test_loader,
                 device=device,
                 layer_name="layer4",
-                cell_xy=(2, 2),     # 중앙 cell
-                channel=0,          # 고정 channel
+                cell_xy=(2, 2),
+                channel=0,
                 num_batches=cfg.erf_num_batches,
             )
             
