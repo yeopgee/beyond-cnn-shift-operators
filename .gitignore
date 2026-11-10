@@ -1,0 +1,12 @@
+.ipynb_checkpoints/
+__pycache__/
+*.pyc
+checkpoints/
+runs/
+ConvJitter_runs/
+data/
+*.pt
+*.pth
+*.ckpt
+*.zip
+*.tar.gz
