@@ -306,7 +306,7 @@ class LearnableShift4Way(nn.Module):
         self,
         num_channels: int = 64,
         temperature: float = 1.0,
-        init_identity_bias: float = 0.3,   # 🔹 거의 0에 가까운 bias
+        init_identity_bias: float = 0.3,
         init_noise_std: float = 1e-3,      # 🔹 symmetry breaking
     ):
         super().__init__()
