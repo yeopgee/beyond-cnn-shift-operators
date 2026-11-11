@@ -35,14 +35,9 @@ CIFAR-100 test accuracy after 120 epochs across four seeds:
 
 At epoch 20, the shifted models showed a wider measured ERF:
 
-**No shift**  
-<img src="assets/erf-baseline.png" alt="Baseline ERF" width="480">
-
-**Deterministic shift**  
-<img src="assets/erf-deterministic.png" alt="Deterministic-shift ERF" width="480">
-
-**Learnable shift**  
-<img src="assets/erf-learnable.png" alt="Learnable-shift ERF" width="480">
+| No shift | Deterministic shift | Learnable shift |
+| :---: | :---: | :---: |
+| <img src="assets/erf-baseline.png" alt="No-shift ERF" width="270" height="212"> | <img src="assets/erf-deterministic.png" alt="Deterministic-shift ERF" width="270" height="212"> | <img src="assets/erf-learnable.png" alt="Learnable-shift ERF" width="270" height="212"> |
 
 *ERF visualizations from my KUBIG presentation, shown at the same training epoch.*
 
