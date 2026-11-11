@@ -13,7 +13,7 @@ This repository contains my shift-operation experiments from the [KUBIG Beyond C
 
 ## My contribution
 
-- Implemented **deterministic shifts**, **random shifts**, **shifts with interpolation**, and **learnable shifts**.
+- Implemented **deterministic shifts**, **random shifts**, **fractional shifts**, and **learnable shifts**.
 - Inserted each operator into the same ResNet-18 backbone and held the remaining architecture and training setup fixed for comparison.
 - Compared classification accuracy and visualized the **effective receptive field (ERF)** at a fixed output position.
 
