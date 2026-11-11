@@ -23,7 +23,7 @@ This repository contains my shift-operation experiments from the [KUBIG Beyond C
 
 ## Results
 
-The presentation reports CIFAR-100 test accuracy over four seeds after 120 epochs:
+CIFAR-100 test accuracy after 120 epochs across four seeds:
 
 | Operator | Mean accuracy (%) | SD |
 | --- | ---: | ---: |
@@ -33,7 +33,7 @@ The presentation reports CIFAR-100 test accuracy over four seeds after 120 epoch
 | 0.5-pixel shift | 76.65 | 0.31 |
 | Random 1-pixel shift | 76.17 | 0.21 |
 
-At epoch 20, the shifted models showed a wider measured ERF. The images below are displayed at the same width for comparison.
+At epoch 20, the shifted models showed a wider measured ERF:
 
 **No shift**  
 <img src="assets/erf-baseline.png" alt="Baseline ERF" width="480">
