@@ -52,8 +52,8 @@ The shifts widened the measured ERF but did not improve classification accuracy 
 
 - My shift operations act as channel-wise convolutions with randomly selected, fixed, or constrained learnable kernels.
 - Although the deterministic and learnable shifts preserved translation equivariance away from boundaries, their restrictions on the shift kernels introduced additional inductive biases whose benefits for the task remained unclear.
-- Random shifts may destabilize training objective. 
-
+- Random shifts may destabilize training, because shift directions are selected randomly at each forward pass.
+ 
 ## Code structure
 
 | File | Role |
