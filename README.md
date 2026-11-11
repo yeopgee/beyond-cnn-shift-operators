@@ -30,8 +30,8 @@ CIFAR-100 test accuracy after 120 epochs across four seeds:
 | No shift | **77.62** | 0.16 |
 | Deterministic shift | 77.18 | 0.24 |
 | Learnable shift | 77.01 | 0.21 |
-| 0.5-pixel shift | 76.65 | 0.31 |
-| Random 1-pixel shift | 76.17 | 0.21 |
+| fractional shift | 76.65 | 0.31 |
+| Random shift | 76.17 | 0.21 |
 
 At epoch 20, the shifted models showed a wider measured ERF:
 
