@@ -4,7 +4,7 @@ This repository contains my shift-operation experiments from the [KUBIG Beyond C
 
 ## Motivation
 
-- Shifting feature map could widen the effective receptive field without relying on larger convolution kernels or attention, while adding little computation.
+- Shifting feature maps could widen the effective receptive field without larger convolution kernels or attention, while adding little additional computation.
 - Random shifts could also act as feature-map-level augmentation and encourage more robust representations.
 
 ![Illustration of jittering a feature map](assets/jittering-concept.png)
