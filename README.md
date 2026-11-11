@@ -46,7 +46,7 @@ At epoch 20, the shifted models showed a wider measured ERF:
 
 *ERF visualizations from my KUBIG presentation, shown at the same training epoch.*
 
-The shifts widened the measured ERF but did not improve classification accuracy in these experiments. The [team project](https://github.com/KU-BIG/KUBIG_2025_FALL/tree/main/KUBIG%20CONFERENCE/Beyond%20CNN%201%ED%8C%80%28%5E%5E%29) also explored other approaches, including fully connected layers and rotations.
+The shifts widened the measured ERF but did not improve classification accuracy in these experiments. The [team project](https://github.com/KU-BIG/KUBIG_2025_FALL/tree/main/KUBIG%20CONFERENCE/Beyond%20CNN%201%ED%8C%80%28%5E%5E%29) also explored other approaches, including incorporating fully connected layers and rotations.
 
 ## Interpretations
 
