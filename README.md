@@ -48,6 +48,12 @@ At epoch 20, the shifted models showed a wider measured ERF:
 
 The shifts widened the measured ERF but did not improve classification accuracy in these experiments. The [team project](https://github.com/KU-BIG/KUBIG_2025_FALL/tree/main/KUBIG%20CONFERENCE/Beyond%20CNN%201%ED%8C%80%28%5E%5E%29) also explored other approaches, including fully connected layers and rotations.
 
+## Interpretations
+
+- My shift operations act as channel-wise convolutions with randomly selected, fixed, or constrained learnable kernels.
+- Although the deterministic and learnable shifts preserved translation equivariance away from boundaries, their restrictions on the shift kernels introduced additional inductive biases whose benefits for the task remained unclear.
+- Random shifts may destabilize training objective. 
+
 ## Code structure
 
 | File | Role |
