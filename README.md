@@ -14,7 +14,7 @@ This repository contains my shift-operation experiments from the [KUBIG Beyond C
 ## My contribution
 
 - Implemented **deterministic shifts**, **random shifts**, **fractional shifts**, and **learnable shifts**.
-- The random and deterministic shifts assigned channels to shift directions randomly or by channel index, while the learnable variant combined shifted and unshifted feature maps using learned weights.
+- The **random and deterministic shifts** assigned channels to shift directions randomly or by channel index, while the **learnable variant** combined shifted and unshifted feature maps using learned weights.
 - Inserted each operator into the same ResNet-18 backbone and held the remaining architecture and training setup fixed for comparison.
 - Compared classification accuracy and visualized the **effective receptive field (ERF)** at a fixed output position.
 
