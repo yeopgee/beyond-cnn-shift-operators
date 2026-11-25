@@ -10,3 +10,6 @@ data/
 *.ckpt
 *.zip
 *.tar.gz
+.DS_Store
+.venv/
+.pytest_cache/

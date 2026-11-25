@@ -21,7 +21,7 @@ class Config:
 
     # --- logging ---
     exp_name: str = "cifar100_resnet18"
-    variant: str = "baseline"  # baseline | shift_int | shift_grid | scale | ...
+    variant: str = "baseline"  # baseline | shift_int | shift_int_partial | shift_det | shift_float_05 | shift_learnable
     log_root: str = "./runs"
     ckpt_root: str = "./checkpoints"
     save_best: bool = True
