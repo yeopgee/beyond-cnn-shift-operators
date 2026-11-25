@@ -54,48 +54,8 @@ The shifts widened the measured ERF but did not improve classification accuracy 
 
 | File | Role |
 | --- | --- |
-| [`config.py`](config.py), [`data.py`](data.py) | Shared settings and CIFAR-100 loading |
 | [`operators.py`](operators.py) | Shift operators and interpolation |
 | [`model.py`](model.py) | ResNet-18 with operator selection |
 | [`train.py`](train.py) | Training and experiment entry point |
 | [`evaluation.py`](evaluation.py) | Accuracy and ERF measurement |
 | [`notebooks/ConvJitter.ipynb`](notebooks/ConvJitter.ipynb) | Original experiment sequence |
-
-## Running the code
-
-Run commands from the repository root. Use a separate virtual environment:
-
-```bash
-python -m venv .venv
-source .venv/bin/activate
-python -m pip install -r requirements.txt
-```
-
-For interactive exploration, install `requirements-notebook.txt` instead. The
-notebook now includes section headings linking each stage to its Python module.
-The Python scripts expose the main workflow; the notebook also preserves optional
-plots and alternative experiments. Datasets, checkpoints, and generated outputs
-are not committed.
-
-```bash
-python train.py --variant baseline --seed 42
-python train.py --variant shift_det --seed 42
-python train.py --variant shift_learnable --seed 42
-```
-
-Other variants are `shift_int`, `shift_int_partial`, and `shift_float_05`.
-Use `python train.py --help` for data, epoch, batch-size, and worker options.
-CIFAR-100 downloads automatically; checkpoints go to `checkpoints/` and
-TensorBoard logs to `runs/`. The notebook's final cell summarizes checkpoints
-across seeds 8, 9, 10, and 42. Run each requested seed before comparing results.
-
-The module definitions match the notebook. Random shifts also remain random
-during evaluation. The recorded `best_acc` is the maximum test accuracy observed
-during training, rather than an independent validation-selected final test score.
-The existing experiment and reported results are preserved.
-
-Check Python/notebook syntax and shared definitions without starting training:
-
-```bash
-python checks/check_notebook.py
-```
